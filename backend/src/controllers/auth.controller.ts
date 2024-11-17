@@ -27,14 +27,14 @@ export class AuthController {
 
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
         secure: true,
         maxAge: 1000 * 60 * 60 * 24, // 1 day
       });
 
       res.cookie("jwtToken", token, {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
         secure: true,
         maxAge: 30 * 1000, // 30 seconds
       });
@@ -75,7 +75,7 @@ export class AuthController {
           );
           res.cookie("jwtToken", newAccessToken, {
             httpOnly: true,
-            sameSite: "strict",
+            sameSite: "none",
             secure: true,
             maxAge: 1000 * 30, // 30 sec
           });
@@ -99,12 +99,12 @@ export class AuthController {
 
       res.clearCookie("jwt", {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
         secure: true,
       });
       res.clearCookie("jwtToken", {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
         secure: true,
       });
 
