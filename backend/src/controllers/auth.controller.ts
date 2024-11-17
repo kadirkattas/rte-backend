@@ -27,13 +27,13 @@ export class AuthController {
 
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "lax",
         maxAge: 1000 * 60 * 60 * 24, // 1 day
       });
 
       res.cookie("jwtToken", token, {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "lax",
         maxAge: 30 * 1000, // 30 seconds
       });
 
@@ -73,7 +73,7 @@ export class AuthController {
           );
           res.cookie("jwtToken", newAccessToken, {
             httpOnly: true,
-            sameSite: "strict",
+            sameSite: "lax",
             maxAge: 1000 * 30, // 30 sec
           });
           res.json({ message: "Token refreshed", token: newAccessToken });
@@ -96,11 +96,11 @@ export class AuthController {
 
       res.clearCookie("jwt", {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "lax",
       });
       res.clearCookie("jwtToken", {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "lax",
       });
 
       res.status(200).json({ message: "Logged out" });
